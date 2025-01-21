@@ -4,6 +4,7 @@ import Button from "../../ui/button";
 import Link from "next/link";
 import { formatUrl } from "@/app/lib/utils";
 import { ProfileData } from "@/app/server/get-profile-data";
+import TotalVisits from "../total-visits";
 // import { ProfileData } from "@/app/server/get-profile-data";
 // import AddCustomLink from "./add-custom-link";
 // import { formatUrl } from "@/app/lib/utils";
@@ -24,9 +25,7 @@ export default async function UserCard({
     <div className="w-[348px] flex flex-col gap-5 items-center p-5 border border-white border-opacity-10 bg-[#121212] rounded-3xl text-white">
       <div className="size-48">
         <img
-          // src={
-          //   (await getDownloadURLFromPath(profileData?.imagePath)) || "/me.webp"
-          // }
+          src={"me.webp"}
           alt="Profile image"
           className="rounded-full object-cover w-full h-full"
         />
@@ -98,15 +97,15 @@ export default async function UserCard({
       </div>
       <div className="flex flex-col gap-3 w-full min-h-[172px]">
         <div className="w-full flex flex-col items-center gap-3">
-          {profileData?.link1 && (
-            <Link
-              href={""}
-              target="_blank"
-              className="w-full"
-            >
-              <Button className="w-full">{"profileData.link1.title"}</Button>
-            </Link>
-          )}
+
+          <Link
+            href={""}
+            target="_blank"
+            className="w-full"
+          >
+            <Button className="w-full">{"profileData.link1.title"}</Button>
+          </Link>
+
           {profileData?.link2 && (
             <Link
               href={formatUrl("profileData?.link2.url")}
@@ -130,6 +129,8 @@ export default async function UserCard({
               <Plus />
             </button>
           )}
+
+    
           {/* {isOwner && <AddCustomLink />} */}
         </div>
       </div>
