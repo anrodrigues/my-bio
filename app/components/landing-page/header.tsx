@@ -1,11 +1,13 @@
 
+import { auth } from "@/app/lib/auth";
 import Button from "../ui/button";
 
 import Link from "next/link";
+import { manageAuth } from "@/app/actions/manage-auth";
 
 
 export default async function Header() {
-  // const session = await auth();
+const session = await auth();
 
   // const profileId = await getProfileId(session?.user?.id as string);
 
@@ -16,12 +18,12 @@ export default async function Header() {
         <h3 className="text-white text-2xl font-bold">ProjectInBio</h3>
       </div>
       <div className="flex items-center gap-4">
-        {/* {session && (
-          <Link href={`/${profileId}`}>
+        {session && (
+          <Link href={`/`}>
             <Button>Minha Página</Button>
           </Link>
-        )} */}
-        <form /*action={manageAuth}*/>
+        )}
+        <form action={manageAuth}>
           <Button>{"Login"}</Button>
         </form>
       </div>
