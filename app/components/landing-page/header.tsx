@@ -23,8 +23,9 @@ const session = await auth();
             <Button>Minha Página</Button>
           </Link>
         )}
+
         <form action={manageAuth}>
-          <Button>{"Login"}</Button>
+          <Button>{session ? "Sair" : "Login"}</Button>
         </form>
       </div>
     </div>

@@ -1,3 +1,5 @@
+
+
 import { cert, getApps, initializeApp } from "firebase-admin/app"
 import { getFirestore } from "firebase-admin/firestore"
 import { getStorage } from "firebase-admin/storage"
@@ -13,7 +15,7 @@ export const firebaseCert = cert({
 if (!getApps().length) {
   initializeApp({
     credential: firebaseCert,
-    storageBucket: process.env.FIREBASE_STORAGE_BUCKET
+    storageBucket: process.env.FIREBASE_PRIVATE_BUCKET
   })
 }
 

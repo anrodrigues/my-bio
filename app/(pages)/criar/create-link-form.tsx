@@ -1,6 +1,7 @@
 "use client";
 
 
+import { verifyLink } from "@/app/actions/verify-link";
 import Button from "@/app/components/ui/button";
 import TextInput from "@/app/components/ui/text-input";
 import { sanitizeLink } from "@/app/lib/utils";
@@ -26,20 +27,20 @@ export default function CreateLinkForm() {
     e.preventDefault();
 
     // Quando o usuario nao escreve um link
-    // if (link.length === 0) return setError("Escolha um link primeiro :)");
+    if (link.length === 0) return setError("Escolha um link primeiro :)");
 
     // // Quando o usuario escolhe um link ja existente
-    // const isLinkTaken = await verifyLink(link);
+    const isLinkTaken = await verifyLink(link);
 
-    // if (isLinkTaken) return setError("Desculpe, esse link já está em uso.");
+    if (isLinkTaken) return setError("Desculpe, esse link já está em uso.");
 
     // // Criar o perfil
     // const isLinkCreated = await createLink(link);
 
-   // if (!isLinkCreated)
-     // return setError("Erro ao criar o perfil. Tente novamente.");
+    // if (!isLinkCreated)
+    // return setError("Erro ao criar o perfil. Tente novamente.");
 
-    router.push(`/${link}`);
+    // router.push(`/${link}`);
   }
 
   return (
