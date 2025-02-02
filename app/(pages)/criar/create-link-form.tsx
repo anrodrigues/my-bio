@@ -1,6 +1,7 @@
 "use client";
 
 
+import { createLink } from "@/app/actions/create-link";
 import { verifyLink } from "@/app/actions/verify-link";
 import Button from "@/app/components/ui/button";
 import TextInput from "@/app/components/ui/text-input";
@@ -35,12 +36,12 @@ export default function CreateLinkForm() {
     if (isLinkTaken) return setError("Desculpe, esse link já está em uso.");
 
     // // Criar o perfil
-    // const isLinkCreated = await createLink(link);
+    const isLinkCreated = await createLink(link);
 
-    // if (!isLinkCreated)
-    // return setError("Erro ao criar o perfil. Tente novamente.");
+    if (!isLinkCreated)
+      return setError("Erro ao criar o perfil. Tente novamente.");
 
-    // router.push(`/${link}`);
+    router.push(`/${link}`);
   }
 
   return (
