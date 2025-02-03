@@ -10,17 +10,17 @@ const config: Config = {
     extend: {
       colors: {
         "background-primary": "#050505",
-        "background-secondary": "#101010",
-        "content-primary": "#191919",
-        "content-secondary": "#CCCCCC",
-        "content-tertiary": "#828282",
-        "content-placeholder": "#626077",
-        "border-primary": "#2E2E2E",
-        "border-secondary": "#3D3D3D",
-        "border-tertiary": "#52334A",
-        "accent-purple": "#7B89F4",
-        "accent-green": "#7BD07B",
-        "accent-pink": "#B5466D"
+        "background-secondary": "#0F0F10",
+        "background-tertiary": "#19191A",
+        "content-body": "#CDCBCC",
+        "content-placeholder": "#827D7F",
+        "content-headline": "#B2B2B2",
+        "border-primary": "#19191A",
+        "border-secondary": "#323234",
+        "border-tertiary": "#97979B",
+        "accent-purple": "#4B2DBB",
+        "accent-green": "#87BB2D",
+        "accent-pink": "#B5446B"
       },
     },
   },
