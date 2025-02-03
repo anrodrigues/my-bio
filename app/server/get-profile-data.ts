@@ -1,3 +1,7 @@
+import "server-only"
+
+import { db } from "../lib/firebase"
+
 export type ProfileData = {
   userId: string;
   name: string;
@@ -27,3 +31,12 @@ export type ProjectData = {
   createdAt: string;
   totalVisits?: number;
 };
+
+
+export async function getProfileData(profileId: string) {
+  const snapshot = await db.collection("profiles").doc(profileId).get()
+
+  return snapshot.data() as ProfileData; 
+}
+
+
