@@ -5,6 +5,7 @@ import Link from "next/link";
 import { formatUrl } from "@/app/lib/utils";
 import { ProfileData } from "@/app/server/get-profile-data";
 import TotalVisits from "../total-visits";
+import EditSocialLinks from "./edit-social-links";
 // import { ProfileData } from "@/app/server/get-profile-data";
 // import AddCustomLink from "./add-custom-link";
 // import { formatUrl } from "@/app/lib/utils";
@@ -19,7 +20,7 @@ export default async function UserCard({
   profileData?: ProfileData;
   isOwner?: boolean;
 }) {
-  const icons = [Github, Instagram, Linkedin, Twitter, Plus];
+  const icons = [Github, Instagram, Linkedin, Twitter];
 
   return (
     <div className="w-[348px] flex flex-col gap-5 items-center p-5 border border-white border-opacity-10 bg-[#121212] rounded-3xl text-white">
@@ -90,9 +91,11 @@ export default async function UserCard({
                 <Icon />
               </button>
             ))}
-          {/* {isOwner && (
+
+            
+     
             <EditSocialLinks socialMedias={profileData?.socialMedias} />
-          )} */}
+        
         </div>
       </div>
       <div className="flex flex-col gap-3 w-full min-h-[172px]">
@@ -124,6 +127,7 @@ export default async function UserCard({
               <Button className="w-full">{"profileData.link3.title"}</Button>
             </Link>
           )}
+
           {!profileData && (
             <button className="p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]">
               <Plus />
