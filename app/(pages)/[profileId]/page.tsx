@@ -23,7 +23,7 @@ export default async function ProfilePage({
 
   const projects = await getProfileProjects(profileId);
   const session = await auth();
-
+  
   const isOwner = profileData.userId === session?.user?.id;
 
   // Resolve todas as imagens antes do render
@@ -46,7 +46,7 @@ export default async function ProfilePage({
       </div>
 
       <div className="w-1/2 flex justify-center h-min">
-        <UserCard />
+        <UserCard  profileData={profileData} isOwner={isOwner}/>
       </div>
 
       <div className="w-full flex justify-center content-start gap-4 flex-wrap overflow-y-auto max-w-[720px]">
