@@ -15,11 +15,16 @@ export type ProfileData = {
     linkedin: string;
     twitter: string;
   };
-  link1?: string;
-  link2?: string;
-  link3?: string;
+  link1?: LinkData;
+  link2?: LinkData;
+  link3?: LinkData;
   updatedAt?: number;
 };
+
+export type LinkData = {
+  title: string;
+  url: string
+}
 
 export type ProjectData = {
   id: string;

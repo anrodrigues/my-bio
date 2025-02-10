@@ -1,10 +1,10 @@
-import { Github, Instagram, Linkedin, Plus, Twitter } from "lucide-react";
+import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
 // import EditSocialLinks from "./edit-social-links";
-import Button from "../../ui/button";
-import Link from "next/link";
 import { formatUrl } from "@/app/lib/utils";
 import { ProfileData } from "@/app/server/get-profile-data";
-import TotalVisits from "../total-visits";
+import Link from "next/link";
+import Button from "../../ui/button";
+import AddCustomLink from "./add-custom-link";
 import EditSocialLinks from "./edit-social-links";
 // import { ProfileData } from "@/app/server/get-profile-data";
 // import AddCustomLink from "./add-custom-link";
@@ -73,10 +73,10 @@ export default async function UserCard({
               <Linkedin />
             </Link>
           )}
-   
+
           {profileData?.socialMedias?.twitter && (
             <>
-            
+
               <Link
                 href={profileData?.socialMedias?.twitter}
                 target="_blank"
@@ -111,33 +111,45 @@ export default async function UserCard({
             target="_blank"
             className="w-full"
           >
-            <Button className="w-full">Nome do fela</Button>
+            <Button className="w-full">Veja meu novo lançamento</Button>
           </Link>
 
-          {profileData?.link2 && (
+          
+          {profileData?.link1?.title && (
             <Link
-              href={formatUrl("profileData?.link2.url")}
+              href={formatUrl(profileData?.link1.url)}
               target="_blank"
               className="w-full"
             >
-              <Button className="w-full">{profileData.link2}</Button>
-            </Link>
-          )}
-          {profileData?.link3 && (
-            <Link
-              href={formatUrl("profileData?.link3.url")}
-              target="_blank"
-              className="w-full"
-            >
-              <Button className="w-full">{"profileData.link3.title"}</Button>
+              <Button className="w-full">{profileData.link1?.title}</Button>
             </Link>
           )}
 
-          {!profileData && (
-            <button className="p-3 rounded-xl bg-[#1E1E1E] hover:bg-[#2E2E2E]">
-              <Plus />
-            </button>
+          {profileData?.link2?.title && (
+            <Link
+              href={formatUrl(profileData?.link2.url)}
+              target="_blank"
+              className="w-full"
+            >
+              <Button className="w-full">{profileData.link2?.title}</Button>
+            </Link>
           )}
+          {profileData?.link3?.title && (
+            <Link
+              href={formatUrl(profileData?.link3.url)}
+              target="_blank"
+              className="w-full"
+            >
+              <Button className="w-full">{profileData.link3.title}</Button>
+            </Link>
+          )}
+
+
+          {
+            profileData &&
+            <AddCustomLink />
+          }
+
 
 
           {/* {isOwner && <AddCustomLink />} */}
