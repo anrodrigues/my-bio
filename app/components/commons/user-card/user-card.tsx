@@ -1,15 +1,16 @@
 import { Github, Instagram, Linkedin, Twitter } from "lucide-react";
 // import EditSocialLinks from "./edit-social-links";
+import { getDownloadURLFromPath } from "@/app/lib/firebase";
 import { formatUrl } from "@/app/lib/utils";
 import { ProfileData } from "@/app/server/get-profile-data";
 import Link from "next/link";
 import Button from "../../ui/button";
 import AddCustomLink from "./add-custom-link";
 import EditSocialLinks from "./edit-social-links";
+import EditUserCard from "./edit-user-card";
 // import { ProfileData } from "@/app/server/get-profile-data";
 // import AddCustomLink from "./add-custom-link";
 // import { formatUrl } from "@/app/lib/utils";
-// import EditUserCard from "./edit-user-card";
 // import { getDownloadURLFromPath } from "@/app/lib/firebase";
 const profileData = undefined
 
@@ -26,7 +27,7 @@ export default async function UserCard({
     <div className="w-[348px] flex flex-col gap-5 items-center p-5 border border-white border-opacity-10 bg-[#121212] rounded-3xl text-white">
       <div className="size-48">
         <img
-          src={"me.webp"}
+          src={await getDownloadURLFromPath(profileData?.imagePath)}
           alt="Profile image"
           className="rounded-full object-cover w-full h-full"
         />
@@ -36,7 +37,7 @@ export default async function UserCard({
           <h3 className="text-3xl font-bold min-w-0 overflow-hidden">
             {profileData?.name || "André Dev"}
           </h3>
-          {/* {isOwner && <EditUserCard profileData={profileData} />} */}
+         {isOwner && <EditUserCard profileData={profileData} />} 
         </div>
         <p className="opacity-40">
           {profileData?.description || "Eu faço produtos para a Internet"}
@@ -106,13 +107,7 @@ export default async function UserCard({
       <div className="flex flex-col gap-3 w-full min-h-[172px]">
         <div className="w-full flex flex-col items-center gap-3">
 
-          <Link
-            href={""}
-            target="_blank"
-            className="w-full"
-          >
-            <Button className="w-full">Veja meu novo lançamento</Button>
-          </Link>
+
 
           
           {profileData?.link1?.title && (
