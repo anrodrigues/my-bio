@@ -29,7 +29,6 @@ export default function EditSocialLinks({
   const [twitter, setTwitter] = useState(socialMedias?.twitter || "");
 
   const { profileId } = useParams();
-  console.log(profileId)
   async function handleAddSocialLinks() {
     setIsSavingSocialLinks(true);
 

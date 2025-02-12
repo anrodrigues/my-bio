@@ -7,6 +7,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import NewProject from "./new-project";
 import { getDownloadURLFromPath } from "@/app/lib/firebase";
+import { increaseProfileVisits } from "@/app/actions/encrease-profile-visits";
 
 
 
@@ -23,8 +24,12 @@ export default async function ProfilePage({
 
   const projects = await getProfileProjects(profileId);
   const session = await auth();
-  
+
   const isOwner = profileData.userId === session?.user?.id;
+
+  if (!isOwner) {
+    await increaseProfileVisits(profileId)
+  }
 
   // Resolve todas as imagens antes do render
   const projectsWithImages = await Promise.all(
@@ -46,12 +51,13 @@ export default async function ProfilePage({
       </div>
 
       <div className="w-1/2 flex justify-center h-min">
-        <UserCard  profileData={profileData} isOwner={isOwner}/>
+        <UserCard profileData={profileData} isOwner={isOwner} />
       </div>
 
       <div className="w-full flex justify-center content-start gap-4 flex-wrap overflow-y-auto max-w-[720px]">
         {projectsWithImages.map((project) => (
           <ProjectCard
+            project={project}
             key={project.id}
             isOwner={isOwner}
             name={project.projectName}
@@ -64,7 +70,7 @@ export default async function ProfilePage({
       </div>
 
       <div className="absolute bottom-4 right-0 left-0 w-min mx-auto">
-        <TotalVisits totalVisits={1250} showBar />
+        <TotalVisits totalVisits={profileData.totalVisits} showBar />
       </div>
     </div>
   );
