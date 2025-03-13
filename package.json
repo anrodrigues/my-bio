@@ -10,14 +10,16 @@
   },
   "dependencies": {
     "@auth/firebase-adapter": "^2.7.4",
+    "@stripe/stripe-js": "^6.0.0",
     "browser-image-compression": "^2.0.2",
     "clsx": "^2.1.1",
-    "firebase-admin": "^13.0.2",
+    "firebase-admin": "^12.7.0",
     "lucide-react": "^0.471.1",
     "next": "15.0.2",
     "next-auth": "^5.0.0-beta.25",
     "react": "19.0.0-rc-02c0e824-20241028",
     "react-dom": "19.0.0-rc-02c0e824-20241028",
+    "stripe": "^17.7.0",
     "tailwind-merge": "^2.6.0"
   },
   "devDependencies": {
