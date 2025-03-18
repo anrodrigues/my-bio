@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Button from "./button";
 import TextInput from "./text-input";
+import { signIn } from "next-auth/react";
 
 export default function CreateNow() {
   const [link, setLink] = useState("");
@@ -17,9 +18,9 @@ export default function CreateNow() {
       />
       <Button
         onClick={() => {
-          // signIn("google", {
-          //   redirectTo: `/criar?link=${link}`,
-          // });
+          signIn("google", {
+            redirectTo: `/criar?link=${link}`,
+          });
         }}
       >
         Criar agora
