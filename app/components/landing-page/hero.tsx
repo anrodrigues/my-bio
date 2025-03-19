@@ -30,7 +30,7 @@ export default function Hero({
         <div className="relative">
           <UserCard />
           <div className="absolute -bottom-[7%] -right-[45%]">
-            <TotalVisits totalVisits={1342} />
+            <TotalVisits totalVisits={1342}  showBar={true}/>
           </div>
 
 

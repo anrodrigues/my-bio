@@ -1,4 +1,7 @@
+import { auth } from "@/app/lib/auth";
 import { TrendingUp } from "lucide-react";
+import PortalButton from "./portal-button";
+import { manageAuth } from "@/app/actions/manage-auth";
 
 
 export default async function TotalVisits({
@@ -10,6 +13,8 @@ export default async function TotalVisits({
 }) {
   // const session = await auth();
 
+  const session = await auth();
+
   return (
     <div className="w-min whitespace-nowrap flex items-center gap-5 bg-background-secondary border border-border-primary px-8 py-3 rounded-xl shadow-lg">
       <span className="font-bold text-white">Total de visitas</span>
@@ -19,9 +24,9 @@ export default async function TotalVisits({
       </div>
       {showBar && (
         <div className="flex items-center gap-2">
-          {/* {session?.user.isSubscribed && <PortalButton
-           />} */}
-          <form >
+          {session?.user.isSubscribed && <PortalButton
+           />} 
+          <form action={manageAuth}>
             <button>Sair</button>
           </form>
         </div>
